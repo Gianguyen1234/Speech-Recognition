@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Recognition App</title>
+    <style>
+        body {
+            background-color: #282a36;
+            color: #f8f8f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1, h2 {
+            color: #bd93f9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background-color: #bd93f9;
+            color: #f8f8f2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #6272a4;
+        }
+        
+        .transcript-box {
+            width: 400px;
+            height: 100px; /* Set the desired height for the box */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: left;
+            margin-top: 20px;
+            overflow: auto; /* Enable vertical scrolling for overflow content */
+        }
+
+        #transcript-text {
+            margin-top: 20px;
+            color: aqua;
+            font-size: large;
+        }
+
+        /* Customize the appearance of the scrollbar */
+        .transcript-box::-webkit-scrollbar {
+            width: 10px;
+            background-color: #f0f0f0; /* Set the background color of the scrollbar track */
+        }
+
+        .transcript-box::-webkit-scrollbar-thumb {
+            background-color: #888; /* Set the color of the scrollbar thumb */
+            border-radius: 5px;
+        }
+
+        .transcript-box::-webkit-scrollbar-thumb:hover {
+            background-color: #555; /* Set the color of the scrollbar thumb on hover */
+        }
+
+        .transcript-box::-webkit-scrollbar-thumb:active {
+            background-color: #444; /* Set the color of the scrollbar thumb when active */
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech Recognition App</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file" accept=".wav, .mp3">
+        <button type="submit" class="btn">Transcribe</button>
+    </form>
+
+    {% if transcript!= "" %}
+    <div class="transcript-box" id="transcript-text">
+        <h1> Transcript </h1>
+        <p>{{transcript}}</p>
+    </div>
+    {% endif %}
+    
+</body>
+</html>
